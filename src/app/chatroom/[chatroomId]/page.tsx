@@ -10,7 +10,7 @@ const generateUserId = () => {
     // Generate a random user ID (assuming it's unique)
     return Math.random().toString(36).substring(2, 10);
   };
-const page = ({ params }) => {
+const page = ({ params  }:any) => {
     const [chatData, setChatData] = useState([])
     const db = getFirestore(app)
     
