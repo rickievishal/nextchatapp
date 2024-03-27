@@ -31,3 +31,15 @@ body {
     text-wrap: balance;
   }
 }
+.button{
+  transition: all 0.2s ease-in-out ;
+}
+.button:hover{
+
+  box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.464) ;
+  transition: all 0.2s ease-in-out ;
+
+}
+.glow{
+  box-shadow: 1px 2px 20px #ffd7cd4d;
+}
