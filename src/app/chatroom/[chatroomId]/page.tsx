@@ -87,8 +87,8 @@ const page = ({ params }:any) => {
                                 </div>)
                             }
                             else {
-                                return (<div key={data.time} className='w-full flex justify-start'>
-                                    <div className='h-[50px] min-w-[60px]  bg-black  text-white border-[rgb(219,219,219)] glow  px-2 py-2 rounded-r-full rounded-t-full border-[1px] flex justify-center items-center'>{data.message}</div>
+                                return (<div key={data.time} className='w-full  flex justify-start'>
+                                    <div className='h-[50px] min-w-[60px] overflow-hidden  bg-black  text-white border-[rgb(219,219,219)] glow  px-2 py-2 rounded-r-full rounded-t-full border-[1px] flex justify-center items-center'>{data.message}</div>
                                 </div>)
                             }
                         })
@@ -97,8 +97,8 @@ const page = ({ params }:any) => {
 
             </div>
             <div className='w-full h-[50px]  sticky bottom-5 left-0 z-50 px-[30px]  flex justify-center items-center'>
-                <input type="text" placeholder='text here...' className='w-full h-full border border-[rgb(157,157,157)] outline-none bg-black px-2 rounded-md relative glow text-[rgb(207,207,207)]' value={textfield} onChange={(e) => { setTextfield(e.target.value) }} />
-                <button className='w-[40px] justify-center items-center flex bg-[#ff2b00] text-white rounded-md absolute right-[35px] h-[40px] glow' onClick={handleSendButton} ><IoSend /></button>
+                <input type="text" placeholder='text here...' className='w-full h-full border border-[rgb(157,157,157)] outline-none bg-black px-[10px]  rounded-r-full rounded-l-full relative glow text-[rgb(207,207,207)]' value={textfield} onChange={(e) => { setTextfield(e.target.value) }} />
+                <button className='w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white  absolute right-[35px] h-[40px] rounded-full glow' onClick={handleSendButton} ><IoSend /></button>
             </div>
         </div>
     )

@@ -34,7 +34,7 @@ export default function RootLayout({
           </div>
           <div className="w-[95%] sm:w-full h-[600px] flex flex-col z-20 ">
             <div className="w-full h-full flex flex-col">
-              <div className="w-full flex justify-end mb-1">
+              <div className="w-full flex justify-end mb-2">
                 <Link href={"/chatroom"}>
                   <button className="w-[70px] py-1 bg-[#E72929] hover:bg-[#ff5d5d] text-white rounded-lg text-sm duration-200 ease-in-out" >Join</button></Link>
               </div>
