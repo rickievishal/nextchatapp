@@ -10,8 +10,9 @@ const generateUserId = () => {
     // Generate a random user ID (assuming it's unique)
     return Math.random().toString(36).substring(2, 10);
   };
-const page = ({ params  }:any) => {
-    const [chatData, setChatData] = useState([])
+const page = ({ params }:any) => {
+    const [chatData, setChatData] = useState<any[]>([]);
+    
     const db = getFirestore(app)
     
     const userId = generateUserId()
@@ -80,7 +81,7 @@ const page = ({ params  }:any) => {
 
                     {
                         chatData.map((data) => {
-                            if (data.userId == userId) {
+                            if (data.userId  == userId) {
                                 return (<div key={data.time} className='w-full flex justify-end'>
                                     <div className='h-[50px] min-w-[60px] bg-[#ff2b00] glow  text-white px-2 py-2 rounded-l-full rounded-t-full  flex justify-center items-center'>{data.message}</div>
                                 </div>)
