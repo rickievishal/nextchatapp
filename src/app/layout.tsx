@@ -28,7 +28,7 @@ export default function RootLayout({
         <div className=" lg:w-[800px] h-full flex flex-col justify-center items-center"
 
         >
-          <div className="w-full flex flex-col my-[50px] px-[20px]">
+          <div className="w-full bg-black flex flex-col my-[50px] px-[20px]">
             <p className=" text-[30pt] bg-gradient-to-b from-[rgb(241,241,241)] via-white to-stone-700 bg-clip-text text-transparent" >Victoria's secret</p>
             <p className="text-gray-400">Create a link for your chatroom. Join chatrooms using the join now button</p>
           </div>
@@ -36,7 +36,7 @@ export default function RootLayout({
             <div className="w-full h-full flex flex-col">
               <div className="w-full flex justify-end mb-1">
                 <Link href={"/chatroom"}>
-                  <button className="w-[70px] py-1 bg-[#E72929] hover:bg-[#ff5d5d]  rounded-lg text-sm duration-200 ease-in-out" >Join</button></Link>
+                  <button className="w-[70px] py-1 bg-[#E72929] hover:bg-[#ff5d5d] text-white rounded-lg text-sm duration-200 ease-in-out" >Join</button></Link>
               </div>
               <div className="w-full h-full rounded-lg border-[.5px] bg-[rgb(10,10,10)]  border-[rgb(57,57,57)]  flex flex-col justify-between items-center">
                 <div className="w-full h-full">{children}</div>
