@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className="w-screen h-screen flex flex-col items-center relative 
+      <body className="w-screen h-screen flex flex-col items-center relative bg-black 
      ">
         <Headerdiv></Headerdiv>
 
