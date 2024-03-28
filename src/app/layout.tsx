@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className="w-screen h-screen flex flex-col items-center relative bg-black 
+      <body className="w-screen h-screen flex flex-col items-center relative bg-black py-3
      ">
         <Headerdiv></Headerdiv>
 
