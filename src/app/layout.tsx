@@ -25,7 +25,7 @@ export default function RootLayout({
      ">
         <Headerdiv></Headerdiv>
 
-        <div className=" lg:w-[800px] h-full flex flex-col justify-center items-center"
+        <div className=" lg:w-[800px] h-full flex flex-col justify-center items-center z-20"
 
         >
           <div className="w-full bg-black flex flex-col my-[50px] px-[20px]">
