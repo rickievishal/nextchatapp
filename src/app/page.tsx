@@ -19,20 +19,22 @@ const Page = () => {
         chatid: uuid,
         chatroomid: chatroomname
       };
-      
+
       try {
         const docRef = await addDoc(collection(db, "chatrooms"), data);
         const docSnapshot = await getDoc(docRef);
         const chatData = docSnapshot.data();
-        await addDoc(collection(db, "chatData"), { 
-          chatId: chatData.chatid, 
-          messages: [], 
-          chatname: chatroomname 
-        });
-        const generatedLink = `https://visctoriasecret/chatrooms/${chatData.chatid}`;
-        setLink(generatedLink);
-        setIsLinkGenerated(true);
-        setChatroomname("")
+        if (chatData) {
+          await addDoc(collection(db, "chatData"), {
+            chatId: chatData.chatid,
+            messages: [],
+            chatname: chatroomname
+          });
+          const generatedLink = `https://visctoriasecret/chatrooms/${chatData.chatid}`;
+          setLink(generatedLink);
+          setIsLinkGenerated(true);
+          setChatroomname("");
+        }
       } catch (error) {
         console.error("Error generating link:", error);
       }
