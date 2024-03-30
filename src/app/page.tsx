@@ -15,26 +15,24 @@ const Page = () => {
   const handleGenerate = async () => {
     if (chatroomname.trim() !== "") {
       const uuid = uuidv4();
-      const data = {
-        chatid: uuid,
-        chatroomid: chatroomname
-      };
+
 
       try {
+        const messagedata = await addDoc(collection(db, "chatData"), {
+          chatId: uuid,
+          messages: [],
+          chatname: chatroomname
+        });
+        const data = {
+          chatid: uuid,
+          chatroomid: chatroomname
+        };
         const docRef = await addDoc(collection(db, "chatrooms"), data);
-        const docSnapshot = await getDoc(docRef);
-        const chatData = docSnapshot.data();
-        if (chatData) {
-          await addDoc(collection(db, "chatData"), {
-            chatId: chatData.chatid,
-            messages: [],
-            chatname: chatroomname
-          });
-          const generatedLink = `https://visctoriasecret/chatrooms/${chatData.chatid}`;
-          setLink(generatedLink);
-          setIsLinkGenerated(true);
-          setChatroomname("");
-        }
+        const generatedLink = `https://visctoriasecret/chatrooms/${uuid}`;
+        setLink(generatedLink);
+        setIsLinkGenerated(true);
+        setChatroomname("");
+
       } catch (error) {
         console.error("Error generating link:", error);
       }
@@ -50,8 +48,8 @@ const Page = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col pt-[20px]">
-      <div className="w-full h-full my-[30px] px-[30px] flex flex-col justify-start items-center">
+    <div className="w-full h-full flex flex-col  pt-[20px]">
+      <div className="w-full h-full mt-[100px] sm:my-[30px] px-[30px] flex flex-col justify-start  sm:items-center">
         <p className="text-xl text-[rgb(197,197,197)] text-center mb-[70px]">Generate the link</p>
 
         <label htmlFor="chatroomname" className="text-gray-300 text-sm">Chatroom Name</label>
@@ -62,7 +60,7 @@ const Page = () => {
           value={chatroomname}
           onChange={(e) => setChatroomname(e.target.value)}
         />
-        <button className="text-sm bg-white text-black w-[90px] py-1 rounded-r-full rounded-l-full shadow-neutral-50 mt-[10px] mb-[30px] hover:bg-white active:scale-95 button" onClick={handleGenerate}>Generate</button>
+       <div className="w-full flex justify-center items-center"> <button className="text-sm bg-white text-black w-[90px] py-1 rounded-r-full rounded-l-full shadow-neutral-50 mt-[10px] mb-[30px] hover:bg-white active:scale-95 button" onClick={handleGenerate}>Generate</button></div>
         {
           isLinkGenerated && (
             <div className="w-[500px] bg-[rgb(21,21,21)] px-3 h-[60px] flex justify-start items-center border border-[rgb(33,33,33)] relative rounded-md">

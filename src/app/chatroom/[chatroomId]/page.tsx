@@ -7,17 +7,19 @@ import { collection, doc, getDocs, getFirestore, onSnapshot, query, serverTimest
 import { RiCoinsLine } from 'react-icons/ri';
 import { time } from 'console';
 import Link from 'next/link';
+import { match } from 'assert';
+import { constrainedMemory } from 'process';
 const generateUserId = () => {
     // Generate a random user ID (assuming it's unique)
     return Math.random().toString(36).substring(2, 10);
 };
 const page = ({ params }: any) => {
     const [chatData, setChatData] = useState<any[]>([]);
-
     const db = getFirestore(app)
     const containerRef = useRef<HTMLDivElement>(null);
-
     const [textfield, setTextfield] = useState("")
+
+    const [isempty, setIsempty] = useState(false)
 
     function generateDeviceFingerprint(): string {
         if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
@@ -115,28 +117,44 @@ const page = ({ params }: any) => {
 
 
     const handleSendButton = async () => {
-        if (textfield === "")
-            return
+    if (textfield === "") {
+        return;
+    }
 
-        const target = doc(collection(db, "chatData"), params.chatroomId)
+    console.log(params.chatroomId);
+
+    const chatidcheckquery = query(collection(db, "chatData"), where("chatId", "==", `${params.chatroomId}`));
+    const matcheddata = await getDocs(chatidcheckquery);
+    console.log(matcheddata);
+    if (!matcheddata.empty) {
+        const  docref = matcheddata.docs[0].ref;
         const messages = {
             message: textfield,
             time: Date.now(),
             userId: deviceFingerprint
-        }
+        };
+        setIsempty(false)
+        console.log(isempty)
         try {
-            await updateDoc(target, { messages: [...chatData, messages] })
+            await updateDoc(docref, { messages: [...chatData, messages] });
+            console.log("message sent");
+        } catch (e) {
+            console.log(e);
         }
-        catch (e) {
-            console.log(e)
-        }
-        setTextfield("")
     }
+    else {
+        setIsempty(true)
+    }
+    
+    setTextfield("");
+};
+
 
     return (
         <div className='w-full h-full overflow-hidden rounded-md'  >
 
-            <div className='w-full h-full overflow-auto relative' ref={containerRef} >
+           { !isempty ?
+                 (<> <div className='w-full h-full overflow-auto relative' ref={containerRef} >
                 <div className='w-full min-h-full flex flex-col justify-start items-start px-[30px] pt-[60px] pb-[80px] sm:pt-[60px] sm:pb-[80px] gap-y-1  z-40 text-white relative overflow-auto' >
 
                     {
@@ -161,9 +179,11 @@ const page = ({ params }: any) => {
                 <input type="text" placeholder='text here...' className='w-full h-full border pl-[80px] border-[rgb(157,157,157)] outline-none bg-black  pr-[50px]  rounded-r-full rounded-l-full relative glow text-[rgb(207,207,207)]' value={textfield} onChange={(e) => { setTextfield(e.target.value) }} />
                 <button className='w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white  absolute right-[35px] h-[40px] rounded-full glow' onClick={handleSendButton} ><IoSend /></button>
                 <Link href={"/"} className='left-[35px] absolute h-[40px]'><button className='px-3 justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white h-[40px] rounded-full glow' onClick={handleSendButton} >Leave</button></Link>
-            </div>
+            </div></>) :
+            (<><div>Invalide invite</div></>)
+           }
         </div>
     )
-}
 
+}
 export default page
