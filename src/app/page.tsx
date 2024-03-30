@@ -32,6 +32,7 @@ const Page = () => {
         const generatedLink = `https://visctoriasecret/chatrooms/${chatData.chatid}`;
         setLink(generatedLink);
         setIsLinkGenerated(true);
+        setChatroomname("")
       } catch (error) {
         console.error("Error generating link:", error);
       }
