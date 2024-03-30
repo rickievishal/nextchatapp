@@ -173,12 +173,12 @@ const page = ({ params }: any) => {
 
                             chatData.map((data) => {
                                 if (data.userId == deviceFingerprint) {
-                                    return (<motion.div initial={{skew:10,scale:0.9,x:50, y: 20, opacity: 0 }} animate={{skew:0, scale:1,x:0, y: 0, opacity: 1 }} transition={{ duration: 0.4,ease:"easeInOut" }} key={data.time} className='w-full flex justify-end z-0'>
+                                    return (<motion.div initial={{skew:10,scale:0.9,x:50, y: 20, opacity: 0 }} animate={{skew:0, scale:1,x:0, y: 0, opacity: 1 }} transition={{ duration: 0.5,ease:"easeInOut" }} key={data.time} className='w-full flex justify-end z-0'>
                                         <div className='h-[50px] min-w-[60px] bg-[#ff2b00] glow  text-white px-2 py-2 rounded-l-full rounded-t-full  flex justify-center items-center'>{data.message}</div>
                                     </motion.div>)
                                 }
                                 else {
-                                    return (<motion.div key={data.time} initial={{skew:10,scale:0.9,x:-50, y: 20, opacity: 0 }} animate={{skew:0, scale:1,x:0, y: 0, opacity: 1 }} transition={{ duration: 0.4,ease:"easeInOut" }} className='w-full  flex justify-start'>
+                                    return (<motion.div key={data.time} initial={{skew:10,scale:0.9,x:-50, y: 20, opacity: 0 }} animate={{skew:0, scale:1,x:0, y: 0, opacity: 1 }} transition={{ duration: 0.5,ease:"easeInOut" }} className='w-full  flex justify-start'>
                                         <div className='h-[50px] min-w-[60px] overflow-hidden  bg-black  text-white border-[rgb(219,219,219)] glow  px-2 py-2 rounded-r-full rounded-t-full border-[1px] flex justify-center items-center'>{data.message}</div>
                                     </motion.div>)
                                 }
