@@ -117,6 +117,7 @@ const page = ({ params }: any) => {
 
 
     const handleSendButton = async () => {
+
     if (textfield === "") {
         return;
     }
@@ -149,7 +150,12 @@ const page = ({ params }: any) => {
     setTextfield("");
 };
 
-
+const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        handleSendButton();
+    }
+};
     return (
         <div className='w-full h-full overflow-hidden rounded-md'  >
 
@@ -175,11 +181,27 @@ const page = ({ params }: any) => {
                 </div>
 
             </div>
-            <div className='w-full h-[50px]  fixed sm:sticky bottom-5 left-0 z-50 px-[30px]  flex justify-center items-center'>
-                <input type="text" placeholder='text here...' className='w-full h-full border pl-[80px] border-[rgb(157,157,157)] outline-none bg-black  pr-[50px]  rounded-r-full rounded-l-full relative glow text-[rgb(207,207,207)]' value={textfield} onChange={(e) => { setTextfield(e.target.value) }} />
-                <button className='w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white  absolute right-[35px] h-[40px] rounded-full glow' onClick={handleSendButton} ><IoSend /></button>
-                <Link href={"/"} className='left-[35px] absolute h-[40px]'><button className='px-3 justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white h-[40px] rounded-full glow' onClick={handleSendButton} >Leave</button></Link>
-            </div></>) :
+            <form onSubmit={handleSendButton} className='w-full h-[50px] fixed sm:sticky bottom-5 left-0 z-50 px-[30px] flex justify-center items-center'>
+                    <input
+                        type="text"
+                        placeholder='text here...'
+                        className='w-full h-full border pl-[80px] border-[rgb(157,157,157)] outline-none bg-black pr-[50px] rounded-r-full rounded-l-full relative glow text-[rgb(207,207,207)]'
+                        onKeyPress={handleKeyPress}
+                        value={textfield}
+                        onChange={(e) => { setTextfield(e.target.value) }}
+                    />
+                    <button type='submit' className='hidden w-[40px] justify-center items-center sm:flex bg-[#ff2b00] hover:bg-[#ff5230] text-white absolute right-[35px] h-[40px] rounded-full glow'>
+                        <IoSend />
+                    </button>
+                    <button  className=' sm:hidden w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white absolute right-[35px] h-[40px] rounded-full glow' onClick={handleSendButton}>
+                        <IoSend />
+                    </button>
+                    <Link href={"/"} className='left-[35px] absolute h-[40px]'>
+                        <button className='px-3 justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white h-[40px] rounded-full glow'>
+                            Leave
+                        </button>
+                    </Link>
+                </form></>) :
             (<><div>Invalide invite</div></>)
            }
         </div>
