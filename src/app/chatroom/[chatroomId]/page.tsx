@@ -118,14 +118,15 @@ const page = ({ params }: any) => {
     }, [])
 
 
-    const handleSendButton = async () => {
-
+    const handleSendButton = async (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+    
         if (textfield === "") {
             return;
         }
-
+    
         console.log(params.chatroomId);
-
+    
         const chatidcheckquery = query(collection(db, "chatData"), where("chatId", "==", `${params.chatroomId}`));
         const matcheddata = await getDocs(chatidcheckquery);
         console.log(matcheddata);
@@ -148,14 +149,16 @@ const page = ({ params }: any) => {
         else {
             setIsempty(true)
         }
-
+    
         setTextfield("");
     };
+    
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+
         if (e.key === 'Enter') {
             e.preventDefault();
-            handleSendButton();
+            handleSendButton(e)
         }
     };
     return (
@@ -167,18 +170,18 @@ const page = ({ params }: any) => {
 
                     <motion.div initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }} className='w-full min-h-full flex flex-col justify-start items-start px-[30px] pt-[60px] pb-[100px] sm:pt-[60px] sm:pb-[80px] gap-y-1  z-40 text-white relative overflow-auto z-0' >
+                        transition={{ duration: 0.5 }} className='w-full min-h-full flex flex-col justify-start items-start px-[30px] pt-[60px] pb-[100px]  gap-y-1   text-white relative overflow-auto z-0' >
 
                         {
 
                             chatData.map((data) => {
                                 if (data.userId == deviceFingerprint) {
-                                    return (<motion.div initial={{skew:10,scale:0.9,x:50, y: 20, opacity: 0 }} animate={{skew:0, scale:1,x:0, y: 0, opacity: 1 }} transition={{ duration: 0.5,ease:"easeInOut" }} key={data.time} className='w-full flex justify-end z-0'>
+                                    return (<motion.div initial={{ skew: 10, scale: 0.9, x: 50, y: 20, opacity: 0 }} animate={{ skew: 0, scale: 1, x: 0, y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: "easeInOut" }} key={data.time} className='w-full flex justify-end z-0'>
                                         <div className=' min-w-[50px]  max-w-[300px] bg-[#ff2b00] glow  text-white px-3 py-3 rounded-tl-[30px] rounded-t-[30px] rounded-bl-[30px]   flex justify-center items-center'>{data.message}</div>
                                     </motion.div>)
                                 }
                                 else {
-                                    return (<motion.div key={data.time} initial={{skew:10,scale:0.9,x:-50, y: 20, opacity: 0 }} animate={{skew:0, scale:1,x:0, y: 0, opacity: 1 }} transition={{ duration: 0.5,ease:"easeInOut" }} className='w-full  flex justify-start'>
+                                    return (<motion.div key={data.time} initial={{ skew: 10, scale: 0.9, x: -50, y: 20, opacity: 0 }} animate={{ skew: 0, scale: 1, x: 0, y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: "easeInOut" }} className='w-full  flex justify-start'>
                                         <div className=' min-w-[50px]   max-w-[300px]  overflow-hidden  bg-[#000000]  text-white  glow  px-2 py-2 rounded-tr-[30px] rounded-t-[30px] rounded-br-[30px] border-[1px] flex justify-center items-center'>{data.message}</div>
                                     </motion.div>)
                                     // border-[rgb(219,219,219)]
@@ -198,19 +201,16 @@ const page = ({ params }: any) => {
 
 
 
-                    <form onSubmit={handleSendButton} className='w-full h-[50px] fixed sm:sticky bottom-5 left-0 z-50 px-[30px] flex justify-center items-center'>
+                    <form onSubmit={handleSendButton}  className='w-full h-[50px] sticky bottom-5 left-0 z-50 px-[30px] flex justify-center items-center'>
                         <input
                             type="text"
                             placeholder='text here...'
-                            className='w-full h-full border pl-[80px] border-[rgb(157,157,157)] outline-none bg-black pr-[50px] rounded-r-full rounded-l-full relative glow text-[rgb(207,207,207)]'
+                            className='w-full h-full border pl-[80px] border-[rgb(157,157,157)] outline-none bg-black pr-[50px] rounded-r-full rounded-l-full  glow text-[rgb(207,207,207)]'
                             onKeyPress={handleKeyPress}
                             value={textfield}
                             onChange={(e) => { setTextfield(e.target.value) }}
                         />
-                        {/* <button type='submit' className=' w-[40px] justify-center items-center sm:flex bg-[#ff2b00] hover:bg-[#ff5230] text-white absolute right-[35px] h-[40px] rounded-full glow'>
-                            <IoSend />
-                        </button> */}
-                        <button className=' w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white absolute right-[35px] h-[40px] rounded-full glow' >
+                        <button type='submit' className='w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white absolute right-[35px] h-[40px] rounded-full glow'>
                             <IoSend />
                         </button>
                         <Link href={"/"} className='left-[35px] absolute h-[42px]'>
@@ -218,7 +218,8 @@ const page = ({ params }: any) => {
                                 Leave
                             </button>
                         </Link>
-                    </form></>) :
+                    </form>
+                </>) :
                 (<><div>Invalide invite</div></>)
             }
         </div>

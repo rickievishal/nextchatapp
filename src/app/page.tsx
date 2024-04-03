@@ -68,7 +68,7 @@ const Page = () => {
 
   return (
     <div className="w-full h-full flex flex-col  ">
-      <div className="w-full h-full mt-[100px]  sm:my-[30px] flex flex-col justify-start items-center ">
+      <div className="w-full h-full mt-[220px]  sm:my-[300px] flex flex-col justify-start items-center ">
         <p className="text-2xl text-[rgb(197,197,197)] text-center mb-[70px]">Generate the link</p>
 
 

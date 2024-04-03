@@ -27,9 +27,9 @@ export default function RootLayout({
      ">
         <Headerdiv></Headerdiv>
 
-        <div className=" w-full lg:w-[800px] h-full flex flex-col justify-center items-center relative z-20  sm:pt-0" >
+        <div className=" w-full  h-full flex flex-col justify-center items-center relative z-20  sm:pt-0 " >
           <Body></Body>
-          <div className="w-full sm:w-[600px] lg:w-full h-full sm:h-[600px] flex flex-col z-20 ">
+          <div className="w-full h-full  flex flex-col z-20 ">
             <div className="w-full h-full sm:rounded-lg border-[.5px] bg-[rgb(10,10,10)]  border-[rgb(57,57,57)] relative flex flex-col justify-between items-center">
                 {children}
             </div>
