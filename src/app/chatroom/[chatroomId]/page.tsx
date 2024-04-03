@@ -201,7 +201,7 @@ const page = ({ params }: any) => {
 
 
 
-                    <form onSubmit={handleSendButton}  className='w-full h-[50px] sticky bottom-5 left-0 z-50 px-[30px] flex justify-center items-center'>
+                    <form onSubmit={(e)=>handleSendButton}  className='w-full h-[50px] sticky bottom-5 left-0 z-50 px-[30px] flex justify-center items-center'>
                         <input
                             type="text"
                             placeholder='text here...'
