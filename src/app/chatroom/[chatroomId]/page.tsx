@@ -118,7 +118,7 @@ const page = ({ params }: any) => {
     }, [])
 
 
-    const handleSendButton = async (e) => {
+    const handleSendButton = async (e: React.KeyboardEvent<HTMLInputElement>) => {
         e.preventDefault(); // Prevent default form submission behavior
     
         if (textfield === "") {
