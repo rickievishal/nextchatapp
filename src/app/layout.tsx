@@ -32,6 +32,7 @@ export default function RootLayout({
               {children}
             </div>
           </div>
+          <div className="w-full text-sm text-gray-400 flex justify-center items-center">Created by Vishal with fking ❤️🫰🏻</div>
         </div>
       </body>
 

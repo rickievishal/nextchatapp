@@ -234,9 +234,9 @@ const page = ({ params }: any) => {
                 </>) :
                 (<><div className='w-full h-full flex justify-center items-center text-gray-200'>
                     <div className='w-full h-full opacity-50 backdrop-blur-md flex justify-center items-center overflow-hidden'>
-                        <div className='relative w-full sm:w-[500px] h-[400px] bg-[#160d08] border-[#F2613F] border flex flex-col justify-start items-center'>
-                            <p className='pt-[100px] w-[150px] text-center leading-tight'>You know what I want. The password. Now!!</p>
-                            <input className='mt-2 w-[150px]  border-[#F2613F] border text-[#F2613F] active:outline-none focus:outline-none px-3' type="password" onChange={(e)=>{
+                        <div className='relative  h-[400px] bg-[#160d08] border-[#F2613F] border flex flex-col justify-start items-center p-[20px] pr-[100px] pl-[100px]'>
+                            <p className=' w-[150px] text-center leading-tight'>You know what I want. The password. Now!!</p>
+                            <input className=' w-[150px]  border-[#F2613F] border text-[#F2613F] active:outline-none focus:outline-none px-3 mt-5' type="password" onChange={(e)=>{
                                 setPassword(e.target.value)
                             }}/>
                            <div className='h-[200px] w-[200px] absolute bottom-0'>

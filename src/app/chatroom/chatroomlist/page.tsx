@@ -1,5 +1,5 @@
 "use client"
-import 'boxicons'
+// import 'boxicons'
 import { collection, getDocs, getFirestore, query } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import app from '../../firebase/firbase';
@@ -17,22 +17,21 @@ type ChatroomData = {
 const page = () => {
     
     const [data, setdata] = useState<ChatroomData[]>([])
-    const getchatrooms = async () => {
-        const db = getFirestore(app)
-        const getchatroomsquery = query(collection(db, "chatrooms"))
-        const chatroomlist = await getDocs(getchatroomsquery)
-        const data : ChatroomData[] = []
-        chatroomlist.forEach((doc) => data.push(doc.data() as ChatroomData))
-        console.log(data)
-        setdata(data)
-    }
+    const [ischatroomclicked, setIschatroomclicked] = useState(false)
+    
     useEffect(() => {
+        const getchatrooms = async () => {
+            const db = getFirestore(app)
+            const getchatroomsquery = query(collection(db, "chatrooms"))
+            const chatroomlist = await getDocs(getchatroomsquery)
+            const data : ChatroomData[] = []
+            chatroomlist.forEach((doc) => data.push(doc.data() as ChatroomData))
+
+            setdata(data)
+        }
         getchatrooms()
     }, [])
-    const [ischatroomclicked, setIschatroomclicked] = useState(false)
-    const gotochatroom = (path :string) =>{
-        console.log(path)
-    }
+  
 
     return (
         <>
