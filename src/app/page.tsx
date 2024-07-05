@@ -12,9 +12,9 @@ const Page = () => {
   const [chatroomname, setChatroomname] = useState("");
   const [link, setLink] = useState("");
   const [isLinkGenerated, setIsLinkGenerated] = useState(false);
-
+  const [chatroompass, setChatroompass] = useState("")
   const handleGenerate = async () => {
-    if (chatroomname.trim() !== "") {
+    if (chatroomname.trim() !== "" || chatroompass.trim() !== "") {
       const uuid = uuidv4();
       try {
         const messagedata = await addDoc(collection(db, "chatData"), {
@@ -26,12 +26,19 @@ const Page = () => {
           chatid: uuid,
           chatroomid: chatroomname
         };
+        const chatroomkey = await addDoc(collection(db, "passwords"), {
+          chatId: uuid,
+          password : chatroompass,
+          chatname: chatroomname
+        });
+      
         const docRef = await addDoc(collection(db, "chatrooms"), data);
         const generatedLink = `https://anonymous-vishal.vercel.app/chatroom/${uuid}`;
         setLink(generatedLink);
         console.log(generatedLink)
         setIsLinkGenerated(true);
         setChatroomname("");
+        setChatroompass("");
         console.log("created")
 
       } catch (error) {
@@ -77,9 +84,17 @@ const Page = () => {
 
           type="text"
           id="chatroomname"
-          className="w-[300px] bg-[rgb(30,30,30)] text-white outline-none px-3 py-1 rounded-md border border-[rgb(83,83,83)] mb-2 focus:border-blue-500"
+          className="w-[300px] bg-[rgb(30,30,30)] text-white outline-none px-3 py-1 rounded-md border border-[rgb(83,83,83)] mb-2 focus:border-blue-500 mt-2"
           value={chatroomname}
           onChange={(e) => setChatroomname(e.target.value)}
+        />
+        <label htmlFor="chatroompass" className="text-gray-300 text-sm">Chatroom password</label>
+        <input
+          type="text"
+          id="chatroompass"
+          className="w-[300px] bg-[rgb(30,30,30)] text-white outline-none px-3 py-1 rounded-md border border-[rgb(83,83,83)] mb-2 focus:border-blue-500 mt-2"
+          value={chatroompass}
+          onChange={(e) => setChatroompass(e.target.value)}
         />
         <div className="w-full flex justify-center items-center"> <button className="text-sm bg-white text-black w-[90px] py-1 rounded-r-full rounded-l-full shadow-neutral-50 mt-[10px] mb-[30px] hover:bg-white active:scale-95 button" type="submit" onClick={handleGenerate}>Generate</button></div>
 

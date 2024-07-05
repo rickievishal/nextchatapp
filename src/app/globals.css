@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -44,5 +44,29 @@ body {
   box-shadow: 1px 2px 20px #ffd7cd4d;
 }
 html {
+  font-family: "IBM Plex Mono", monospace;
   scroll-behavior: smooth;
+}
+/* Define scrollbar width and color */
+::-webkit-scrollbar {
+  width: 10px; /* Change the width as needed */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000; /* Change the color as needed */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1c1c1c; /* Change the color as needed */
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4f4f4f; /* Change the color as needed */
+}
+chatroom::-webkit-scrollbar-thumb:hover {
+  background: #8b8b8b; /* Change the color as needed */
 }

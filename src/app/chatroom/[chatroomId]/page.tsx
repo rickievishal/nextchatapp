@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react'
-import { IoSend } from "react-icons/io5";
+import { IoCloseSharp, IoSend } from "react-icons/io5";
 import app from '../../firebase/firbase';
 
 import { collection, doc, getDocs, getFirestore, onSnapshot, query, serverTimestamp, updateDoc, where } from 'firebase/firestore';
@@ -11,6 +11,8 @@ import { match } from 'assert';
 import { motion } from "framer-motion"
 import { constrainedMemory } from 'process';
 import { DiVim } from 'react-icons/di';
+import Image from 'next/image';
+import { Button } from '@nextui-org/react';
 const generateUserId = () => {
     // Generate a random user ID (assuming it's unique)
     return Math.random().toString(36).substring(2, 10);
@@ -21,7 +23,7 @@ const page = ({ params }: any) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [textfield, setTextfield] = useState("")
     const [chatname, setChatname] = useState("")
-    const [isempty, setIsempty] = useState(false)
+    const [isempty, setIsempty] = useState(true)
 
     function generateDeviceFingerprint(): string {
         if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
@@ -85,7 +87,7 @@ const page = ({ params }: any) => {
         }
     }, [chatData]);
 
-    // Example usage
+
     const deviceFingerprint = generateDeviceFingerprint();
     useEffect(() => {
         const fetchdata = async () => {
@@ -93,6 +95,7 @@ const page = ({ params }: any) => {
                 const checkchatidQuery = query(collection(db, "chatrooms"), where("chatid", "==", `${params.chatroomId}`));
                 const fetchchatdataQuery = query(collection(db, "chatData"), where("chatId", "==", `${params.chatroomId}`))
                 const chatrooms = await getDocs(checkchatidQuery);
+                console.log(chatrooms)
                 // const messages = await getDocs(fetchchatdataQuery);
                 const unsubscribe = onSnapshot(fetchchatdataQuery, (data) => {
                     data.forEach((data) => {
@@ -101,32 +104,24 @@ const page = ({ params }: any) => {
                         setChatname(data.data().chatname)
                     })
                 })
-
-
-
-
             }
             catch (e) {
                 console.log(e)
             }
 
         }
-        fetchdata();
-
-
-
+            fetchdata();
     }, [])
 
+    const sendmessage = async () => {
+        
 
-    const handleSendButton = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-        e.preventDefault(); // Prevent default form submission behavior
-    
         if (textfield === "") {
             return;
         }
-    
+
         console.log(params.chatroomId);
-    
+
         const chatidcheckquery = query(collection(db, "chatData"), where("chatId", "==", `${params.chatroomId}`));
         const matcheddata = await getDocs(chatidcheckquery);
         console.log(matcheddata);
@@ -149,28 +144,45 @@ const page = ({ params }: any) => {
         else {
             setIsempty(true)
         }
-    
+
         setTextfield("");
     };
-    
+    const handleSendButton = () =>{
+        sendmessage()
+    }
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
 
         if (e.key === 'Enter') {
             e.preventDefault();
-            handleSendButton(e)
+            sendmessage()
         }
     };
+    const [password, setPassword] = useState("")
+    const handlePassCheck = async () => {
+        const query_pass = query(collection(db, "passwords"), where("chatId", "==", `${params.chatroomId}`));
+        const passraw = await getDocs(query_pass)
+        console.log(passraw)
+        console.log(passraw.docs[0].data())
+        if (!passraw.empty) {
+            const crtpass = passraw.docs[0].data().password
+            console.log(passraw)
+            if (crtpass == password) {
+                console.log(crtpass)
+                setIsempty(false)
+            }
+        }
+    }
     return (
-        <div className='w-full h-full overflow-hidden rounded-md'  >
+        <div className='w-full bg-black h-full overflow-hidden  mt-[40px]'  >
 
             {!isempty ?
-                (<> <div className='w-full h-full overflow-auto relative' ref={containerRef} >
+                (<> <div className='w-full px-auto h-full overflow-auto relative ' ref={containerRef} >
 
 
                     <motion.div initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }} className='w-full min-h-full flex flex-col justify-start items-start px-[30px] pt-[60px] pb-[100px]  gap-y-1   text-white relative overflow-auto z-0' >
+                        transition={{ duration: 0.5 }} className='w-full min-h-full flex flex-col justify-start items-start px-[10px] sm:px-[20px] pt-[60px] pb-[100px]  gap-y-1   text-white relative overflow-auto z-0' >
 
                         {
 
@@ -184,7 +196,7 @@ const page = ({ params }: any) => {
                                     return (<motion.div key={data.time} initial={{ skew: 10, scale: 0.9, x: -50, y: 20, opacity: 0 }} animate={{ skew: 0, scale: 1, x: 0, y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: "easeInOut" }} className='w-full  flex justify-start'>
                                         <div className=' min-w-[50px]   max-w-[300px]  overflow-hidden  bg-[#000000]  text-white  glow  px-2 py-2 rounded-tr-[30px] rounded-t-[30px] rounded-br-[30px] border-[1px] flex justify-center items-center'>{data.message}</div>
                                     </motion.div>)
-                                    // border-[rgb(219,219,219)]
+
                                 }
                             }
                             )
@@ -196,12 +208,12 @@ const page = ({ params }: any) => {
                     </motion.div>
 
                 </div>
-                    <div className='w-full h-[100px] sticky z-50 bg-gradient-to-b from-transparent via-[rgb(10,10,10)] to-[rgb(10,10,10)] bottom-0'></div>
-                    <div className='w-full h-[60px]   absolute z-50 bg-gradient-to-b from-[rgb(10,10,10)] via-[rgba(10,10,10,0.52)] to-transparent top-10 sm:top-0 flex justify-center items-start pt-5 text-gray-400'>{chatname}</div>
+                    <div className='w-full h-[100px] sticky z-50 bg-gradient-to-b from-transparent via-[rgb(0,0,0)] to-[rgb(0,0,0)] bottom-0'></div>
+                    <div className='w-full h-[60px]  absolute z-50 bg-gradient-to-b from-[rgb(0,0,0)] via-[rgba(0,0,0,0.52)] to-transparent top-10 sm:top-[50px] flex justify-center items-start pt-5 text-gray-400'>{chatname}</div>
 
 
 
-                    <form onSubmit={(e)=>handleSendButton}  className='w-full h-[50px] sticky bottom-5 left-0 z-50 px-[30px] flex justify-center items-center'>
+                    <div className='w-full h-[50px] sticky bottom-5 left-0 z-50 px-[30px] flex justify-center items-center'>
                         <input
                             type="text"
                             placeholder='text here...'
@@ -210,7 +222,7 @@ const page = ({ params }: any) => {
                             value={textfield}
                             onChange={(e) => { setTextfield(e.target.value) }}
                         />
-                        <button type='submit' className='w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white absolute right-[35px] h-[40px] rounded-full glow'>
+                        <button className='w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white absolute right-[35px] h-[40px] rounded-full glow' onClickCapture={handleSendButton}>
                             <IoSend />
                         </button>
                         <Link href={"/"} className='left-[35px] absolute h-[42px]'>
@@ -218,9 +230,22 @@ const page = ({ params }: any) => {
                                 Leave
                             </button>
                         </Link>
-                    </form>
+                    </div>
                 </>) :
-                (<><div>Invalide invite</div></>)
+                (<><div className='w-full h-full flex justify-center items-center text-gray-200'>
+                    <div className='w-full h-full opacity-50 backdrop-blur-md flex justify-center items-center overflow-hidden'>
+                        <div className='relative w-full sm:w-[500px] h-[400px] bg-[#160d08] border-[#F2613F] border flex flex-col justify-start items-center'>
+                            <p className='pt-[100px] w-[150px] text-center leading-tight'>You know what I want. The password. Now!!</p>
+                            <input className='mt-2 w-[150px]  border-[#F2613F] border text-[#F2613F] active:outline-none focus:outline-none px-3' type="password" onChange={(e)=>{
+                                setPassword(e.target.value)
+                            }}/>
+                           <div className='h-[200px] w-[200px] absolute bottom-0'>
+                                <Image className='absolute bottom-0' src={`/frog.png`} alt={""}  fill />
+                           </div>
+                            <Button className='px-2 py-1 mt-1 z-30 border-[#F2613F] border rounded-md hover:bg-[#F2613F] hover:text-[#160d08]' onClick={handlePassCheck}>Enter</Button>
+                        </div>
+                    </div>
+                </div></>)
             }
         </div>
     )
