@@ -25,8 +25,6 @@ export default function RootLayout({
 
       <body className="w-screen h-screen flex flex-col items-center relative bg-black 
      ">
-
-
         <div className=" w-full  h-full flex flex-col justify-center items-center relative z-20  sm:pt-0 " >
           <Body></Body>
           <div className="w-full h-full  flex flex-col justify-center items-center  z-20 ">

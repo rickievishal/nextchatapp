@@ -9,15 +9,20 @@ import { GoLock } from 'react-icons/go';
 import { IoCloseSharp } from "react-icons/io5";
 import Link from 'next/link'
 import Image from 'next/image';
-
+type ChatroomData = {
+    chatroomid: string;
+    chatid: string;
+    // Add other properties of the chatroom object as needed
+  };
 const page = () => {
-    const [data, setdata] = useState([])
+    
+    const [data, setdata] = useState<ChatroomData[]>([])
     const getchatrooms = async () => {
         const db = getFirestore(app)
         const getchatroomsquery = query(collection(db, "chatrooms"))
         const chatroomlist = await getDocs(getchatroomsquery)
-        const data = []
-        chatroomlist.forEach((doc) => data.push(doc.data()))
+        const data : ChatroomData[] = []
+        chatroomlist.forEach((doc) => data.push(doc.data() as ChatroomData))
         console.log(data)
         setdata(data)
     }
