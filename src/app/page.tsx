@@ -77,8 +77,6 @@ const Page = () => {
     <div className="w-full h-full flex flex-col  ">
       <div className="w-full h-full mt-[220px]  sm:my-[300px] flex flex-col justify-start items-center ">
         <p className="text-2xl text-[rgb(197,197,197)] text-center mb-[70px]">Generate the link</p>
-
-
         <label htmlFor="chatroomname" className="text-gray-300 text-sm">Chatroom Name</label>
         <input
 
@@ -96,7 +94,7 @@ const Page = () => {
           value={chatroompass}
           onChange={(e) => setChatroompass(e.target.value)}
         />
-        <div className="w-full flex justify-center items-center"> <button className="text-sm bg-white text-black w-[90px] py-1 rounded-r-full rounded-l-full shadow-neutral-50 mt-[10px] mb-[30px] hover:bg-white active:scale-95 button" type="submit" onClick={handleGenerate}>Generate</button></div>
+        <div className="max-w-4xl flex justify-center items-center"> <button className="text-sm bg-white text-black w-[90px] py-1 rounded-r-full rounded-l-full shadow-neutral-50 mt-[10px] mb-[30px] hover:bg-white active:scale-95 button" type="submit" onClick={handleGenerate}>Generate</button></div>
 
         {
           isLinkGenerated && (
