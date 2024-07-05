@@ -136,7 +136,7 @@ const page = ({ params }: any) => {
             console.log(isempty)
             try {
                 await updateDoc(docref, { messages: [...chatData, messages] });
-                console.log("message sent");
+                // console.log("message sent");
             } catch (e) {
                 console.log(e);
             }
@@ -162,13 +162,13 @@ const page = ({ params }: any) => {
     const handlePassCheck = async () => {
         const query_pass = query(collection(db, "passwords"), where("chatId", "==", `${params.chatroomId}`));
         const passraw = await getDocs(query_pass)
-        console.log(passraw)
-        console.log(passraw.docs[0].data())
+
+
         if (!passraw.empty) {
             const crtpass = passraw.docs[0].data().password
             console.log(passraw)
             if (crtpass == password) {
-                console.log(crtpass)
+
                 setIsempty(false)
             }
         }
