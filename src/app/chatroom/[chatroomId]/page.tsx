@@ -225,7 +225,7 @@ const page = ({ params }: any) => {
                         <button className='w-[40px] justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white absolute right-[35px] h-[40px] rounded-full glow' onClickCapture={handleSendButton}>
                             <IoSend />
                         </button>
-                        <Link href={"/"} className='left-[35px] absolute h-[42px]'>
+                        <Link href={"https://victoriasecret.vercel.app/"} className='left-[35px] absolute h-[42px]'>
                             <button className='px-3  justify-center items-center flex bg-[#ff2b00] hover:bg-[#ff5230] text-white h-full rounded-full glow'>
                                 Leave
                             </button>

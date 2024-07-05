@@ -1,5 +1,5 @@
 "use client"
-// import 'boxicons'
+
 import { collection, getDocs, getFirestore, query } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import app from '../../firebase/firbase';
@@ -65,7 +65,7 @@ const page = () => {
                                     }}>
                                         <div className='w-full  px-4 group-hover:text-[#0C0C0C] text-[#F2613F] py-2'>{data.chatroomid}</div>
                                         <div className='events-buttons'>
-                                        <Link href={"http://localhost:3000/chatroom/"+data.chatid}>
+                                        <Link href={"https://victoriasecret.vercel.app/chatroom/"+data.chatid}>
                                                 <Tooltip content="Get in??" className='bg-[#0C0C0C] text-[#ef7154] border border-[#ef7154] px-2 text-sm rounded-lg overflow-hidden mb-2'>
                                                     <button className='hover:underline group-hover:text-[#0C0C0C] text-[#ef7154]'>Join</button>
                                                 </Tooltip>

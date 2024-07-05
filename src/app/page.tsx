@@ -33,7 +33,7 @@ const Page = () => {
         });
       
         const docRef = await addDoc(collection(db, "chatrooms"), data);
-        const generatedLink = `https://anonymous-vishal.vercel.app/chatroom/${uuid}`;
+        const generatedLink = `https://victoriasecret.vercel.app/chatroom/${uuid}`;
         setLink(generatedLink);
         console.log(generatedLink)
         setIsLinkGenerated(true);
