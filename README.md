@@ -14,5 +14,5 @@ You can follow me at [https://x.com/vishalToo5](https://x.com/vishalToo5) - wher
 i do more things like this.
 
 
-# Blocked by rules? Break them with codecode🤓
+# Blocked by rules? Break them with code🤓
 
