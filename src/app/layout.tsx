@@ -4,7 +4,7 @@ import { IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Headerdiv from "./Headerdiv";
 import Link from "next/link";
-
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Body from "./Body";
 
 const inter = IBM_Plex_Mono({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600"] });
@@ -30,6 +30,7 @@ export default function RootLayout({
           <div className="w-full h-full  flex flex-col justify-center items-center  z-20 ">
             <div className="w-full max-w-4xl h-full sm:rounded-lg  relative flex flex-col justify-between items-center">
               {children}
+              <SpeedInsights />
             </div>
           </div>
           <div className="w-full text-sm text-gray-400 flex justify-center items-center">Created by Vishal with fking ❤️🫰🏻</div>
