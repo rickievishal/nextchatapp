@@ -1,38 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Victoria Secret 
 
-## Getting Started
+This a chat app to interact annonymously with you ['university-friends']
 
-First, run the development server:
+## THE WHY FOR EVERTHING ???
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Alright, so picture this: I'm in college, and they've banned smartphones like they're ancient relics. Social media? Forget about it—blocked harder than a spam caller. But, in a twist of fate, the college Wi-Fi is still down with Firebase Cloud. So, I thought, "Why not pull a tech Houdini and create a web app with Next.js and Firebase?" Now, even with the Wi-Fi that's slower than a sloth on a lazy day, we can chat and set up private sessions with our hostel buddies. Take that, no-smartphone rule!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open [https://victoriasecret.vercel.app/](https://victoriasecret.vercel.app/) you will see the home page go ahead and create a chatroom.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+You can follow me at [https://x.com/vishalToo5](https://x.com/vishalToo5) - where im reasonably active!
+i do more things like this.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Blocked by rules? Break them with codecode🤓
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# nextchat
-# nextchat
