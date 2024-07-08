@@ -7,13 +7,13 @@ import Link from "next/link";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Body from "./Body";
 import Head from "next/head";
-
+import { Analytics } from '@vercel/analytics/react';
 const inter = IBM_Plex_Mono({ subsets: ["latin"], weight: ["100", "200", "300", "400", "500", "600"] });
 
 export const metadata: Metadata = {
   title: "Victoria'sceret",
   description: "the ultimate chat app for college students! Stay connected with your friends through private chat rooms, even when smartphones and social media are restricted. Enjoy secure, real-time messaging with minimal network access",
-  keywords:"college chat app, private chat rooms, secure messaging, student communication, minimal network access, instagram,omegle"
+  keywords: "college chat app, private chat rooms, secure messaging, student communication, minimal network access, instagram,omegle"
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      
+
       <body className="w-screen h-[] flex flex-col items-center relative bg-black 
      ">
         <div className=" w-full  h-full flex flex-col justify-center items-center relative z-20  sm:pt-0 " >
@@ -33,6 +33,7 @@ export default function RootLayout({
 
 
             {children}
+            <Analytics />
             <SpeedInsights />
 
           </div>
