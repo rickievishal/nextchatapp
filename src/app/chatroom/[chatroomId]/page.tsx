@@ -174,7 +174,7 @@ const page = ({ params }: any) => {
         }
     }
     return (
-        <div className='w-full bg-black h-full overflow-hidden  mt-[40px]'  >
+        <div className='w-full h-screen lg:col-span-2 bg-black overflow-hidden  mt-[40px]'  >
 
             {!isempty ?
                 (<> <div className='w-full px-auto h-full overflow-auto relative ' ref={containerRef} >
@@ -209,7 +209,7 @@ const page = ({ params }: any) => {
 
                 </div>
                     <div className='w-full h-[100px] sticky z-50 bg-gradient-to-b from-transparent via-[rgb(0,0,0)] to-[rgb(0,0,0)] bottom-0'></div>
-                    <div className='w-full h-[60px]  absolute z-50 bg-gradient-to-b from-[rgb(0,0,0)] via-[rgba(0,0,0,0.52)] to-transparent top-10 sm:top-[50px] flex justify-center items-start pt-5 text-gray-400'>{chatname}</div>
+                    <div className='w-full h-[60px]  absolute z-50 bg-gradient-to-b from-[rgb(0,0,0)] via-[rgba(0,0,0,0.52)] to-transparent  lg:top-[100px] sm:top-[50px] sm:left-0 flex justify-center items-start pt-5 text-gray-400'>{chatname}</div>
 
 
 

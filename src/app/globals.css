@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -14,9 +14,12 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
+}html{
+  overflow-x: hidden;
 }
 
 body {
+  overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -25,22 +28,35 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
+::selection {
+  background: #ff5500;
+  -webkit-box-shadow: 0px 0px 270px 7px rgba(255, 111, 0, 0.9);
+  -moz-box-shadow: 0px 0px 270px 7px rgba(255, 111, 0, 0.9);
+  box-shadow: 0px 0px 270px 7px rgba(255, 111, 0, 0.9);
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
-.button{
-  transition: all 0.2s ease-in-out ;
+.button {
+  transition: all 0.2s ease-in-out;
 }
-.button:hover{
-
-  box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.464) ;
-  transition: all 0.2s ease-in-out ;
-
+.glow1 {
+  -webkit-box-shadow: 0px 0px 270px 7px rgba(255, 111, 0, 0.9);
+  -moz-box-shadow: 0px 0px 270px 7px rgba(255, 111, 0, 0.9);
+  box-shadow: 0px 0px 270px 7px rgba(255, 111, 0, 0.9);
 }
-.glow{
+.glow2 {
+  -webkit-box-shadow:0px 0px 105px 45px rgba(0,255,153,0.24);
+  -moz-box-shadow: 0px 0px 105px 45px rgba(0,255,153,0.24);
+  box-shadow: 0px 0px 105px 45px rgba(0,255,153,0.24);
+}
+.button:hover {
+  box-shadow: 1px 1px 20px rgba(255, 255, 255, 0.464);
+  transition: all 0.2s ease-in-out;
+}
+.glow {
   box-shadow: 1px 2px 20px #ffd7cd4d;
 }
 html {

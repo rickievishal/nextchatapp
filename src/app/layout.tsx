@@ -23,17 +23,18 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className="w-screen h-screen flex flex-col items-center relative bg-black 
+      <body className="w-screen h-[] flex flex-col items-center relative bg-black 
      ">
         <div className=" w-full  h-full flex flex-col justify-center items-center relative z-20  sm:pt-0 " >
           <Body></Body>
-          <div className="w-full h-full  flex flex-col justify-center items-center  z-20 ">
-            <div className="w-full max-w-4xl h-full sm:rounded-lg  relative flex flex-col justify-between items-center">
+          <div className="w-full h-full sm:px-10 lg:py-[50px] lg:px-[100px] xl:px-[200px] lg:px-30 flex lg:grid grid-cols-2 flex-col justify-center items-center  z-20 ">
+            
+            
               {children}
               <SpeedInsights />
-            </div>
+
           </div>
-          <div className="w-full text-sm text-gray-400 flex justify-center items-center">Created by Vishal with fking ❤️🫰🏻</div>
+          <div className="w-full text-sm text-gray-400 flex justify-center items-center py-4">Created by Vishal with fking ❤️🫰🏻</div>
         </div>
       </body>
 

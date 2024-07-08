@@ -15,12 +15,12 @@ const Body = () => {
             <div className="w-full h-full z-40 relative flex items-start justify-between " >
                 <div className='h-full flex flex-col justify-center gap-1'>
                 <Link href={"https://victoriasecret.vercel.app/"}>
-                <p className="text-[20pt] bg-gradient-to-b from-[rgb(241,241,241)] via-white to-stone-700 bg-clip-text text-transparent" onClick={() => {
+                <p className="text-[20pt] bg-gradient-to-b from-[rgb(241,241,241)] via-white to-stone-700 bg-clip-text text-transparent flex flex-col lg:flex lg:flex-row justify-start items-center" onClick={() => {
                     window.history.back()
-                }}>Victoria's secret</p></Link>
-                <p className="text-gray-400 text-[8pt] max-w-2xl text-center">Create a link for your chatroom. Join chatrooms using the join now button</p>
+                }}><span>Victoria's secret</span> <span className='py-1 text-center w-[180px] h-[25px] text-xs bg-[#dc5131] text-gray-300 rounded-lg ml-3'>anonymous chatroom.</span></p></Link>
+                <p className="text-gray-400 text-[8pt] max-w-2xl text-center hidden sm:block">Create a link for your chatroom. Join chatrooms using the join now button</p>
                 </div>
-                <div className='h-full flex  justify-center items-center gap-2 hidden sm:block sm:flex'>
+                <div className='h-full flex  justify-center items-center gap-2 hidden lg:block lg:flex'>
                 <Link href={"https://victoriasecret.vercel.app/chatroom/chatroomlist"}>
                     <Button className='bg-[#d44525] hover:bg-[#d7583c] px-2 py-3 text-gray-200 text-sm flex '>
                         ChatroomRadar<span className='text-lg'><GiRadarDish /></span>
