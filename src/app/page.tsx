@@ -112,10 +112,13 @@ const Page = () => {
 
             {
               isLinkGenerated && (
-                <div className="bg-[rgb(21,21,21)] mx-4 py-2 px-2 sm:h-[60px] flex justify-start items-center border border-[rgb(33,33,33)] relative  ">
-                  <button className="absolute right-2 px-2 py-2 rounded-full hover:bg-[rgb(48,48,48)] active:bg-[rgb(37,37,37)] duration-200 ease-in-out" onClick={handleCopyLink}><MdContentCopy className="text-gray-200" /></button>
-                  <p className=" text-gray-400 pr-[30px]">{`${link}`}</p>
+                <div className=" w-[300px] sm:w-full max-w-lg h-auto overflow-x-hidden bg-[rgb(21,21,21)]  py-2 px-4 lg:px-6 flex justify-start items-center border border-[rgb(33,33,33)] relative">
+                  <button className="absolute right-2 px-2 py-2 rounded-full hover:bg-[rgb(48,48,48)] active:bg-[rgb(37,37,37)] duration-200 ease-in-out" onClick={handleCopyLink}>
+                    <MdContentCopy className="text-gray-200" />
+                  </button>
+                  <p className="text-left text w-full text-gray-400 break-words">{link}</p>
                 </div>
+
               )
             }
           </div>
