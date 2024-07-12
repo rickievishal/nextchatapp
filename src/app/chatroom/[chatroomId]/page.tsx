@@ -174,7 +174,7 @@ const page = ({ params }: any) => {
         }
     }
     return (
-        <div className='w-full h-screen lg:col-span-2 bg-black overflow-hidden  mt-[40px]'  >
+        <div className='w-full h-full lg:col-span-2 bg-black overflow-hidden  mt-[40px]'  >
 
             {!isempty ?
                 (<> <div className='w-full px-auto h-full overflow-auto relative ' ref={containerRef} >
@@ -194,7 +194,7 @@ const page = ({ params }: any) => {
                                 }
                                 else {
                                     return (<motion.div key={data.time} initial={{ skew: 10, scale: 0.9, x: -50, y: 20, opacity: 0 }} animate={{ skew: 0, scale: 1, x: 0, y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: "easeInOut" }} className='w-full  flex justify-start'>
-                                        <div className=' min-w-[50px]   max-w-[300px]  overflow-hidden  bg-[#000000]  text-white  glow  px-2 py-2 rounded-tr-[30px] rounded-t-[30px] rounded-br-[30px] border-[1px] flex justify-center items-center'>{data.message}</div>
+                                        <div className=' min-w-[50px]   max-w-[300px]  overflow-hidden  bg-[#BED754]  text-white  glow  px-2 py-2 rounded-tr-[30px] rounded-t-[30px] rounded-br-[30px] border-[1px] flex justify-center items-center'>{data.message}</div>
                                     </motion.div>)
 
                                 }
