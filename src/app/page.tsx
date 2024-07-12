@@ -90,7 +90,7 @@ const Page = () => {
       <div className="w-full lg:col-span-1  h-full sm:rounded-lg  relative flex  flex-col justify-between items-center">
         <div className="w-full h-full flex flex-col  ">
           <div className="w-full h-full lg:mt-[220px]  sm:my-[300px] flex flex-col justify-start items-center ">
-            <p className="text-2xl text-[rgb(197,197,197)] text-center mb-[50px]">Generate the link</p>
+            <p className="text-lg sm:text-xl lg:text-2xl text-[rgb(197,197,197)] text-center mb-[50px]">Generate the link</p>
             <label htmlFor="chatroomname" className="text-gray-300 text-sm">Chatroom Name</label>
             <input
 
