@@ -12,7 +12,7 @@ const Body = () => {
 
     return (
         <div className="w-full h-[100px] sm:h-[90px] absolute top-0 right-0 bg-[rgba(0,0,0,0)] backdrop-blur-md z-30 px-3 flex justify-start items-center ">
-            <div className="w-full h-full z-40 relative flex items-start justify-between " >
+            <div className="w-full h-full z-40 relative flex items-start justify-between sm:justify-center lg:justify-between " >
                 <div className='h-full flex flex-col justify-center gap-1'>
                 <Link href={"https://victoriasecret.vercel.app/"}>
                 <p className="text-[20pt] bg-gradient-to-b from-[rgb(241,241,241)] via-white to-stone-700 bg-clip-text text-transparent flex flex-col lg:flex lg:flex-row justify-start items-center" onClick={() => {

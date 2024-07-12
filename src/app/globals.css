@@ -14,12 +14,10 @@
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}html{
-  overflow-x: hidden;
 }
 
 body {
-  overflow-x: hidden;
+
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,

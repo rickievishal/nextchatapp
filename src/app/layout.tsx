@@ -25,11 +25,11 @@ export default function RootLayout({
   return (
     <html lang="en">
 
-      <body className="w-screen h-[] flex flex-col items-center relative bg-black 
+      <body className="w-screen flex flex-col items-center relative bg-black 
      ">
-        <div className=" w-full  h-full flex flex-col justify-center items-center relative z-20  sm:pt-0 " >
+        <div className=" w-full min-h-screen  flex flex-col justify-center items-center relative z-20  sm:pt-0 " >
           <Body></Body>
-          <div className="w-full h-full sm:px-10 lg:py-[50px] lg:px-[100px] xl:px-[200px] lg:px-30 flex lg:grid grid-cols-2 flex-col justify-center items-center  z-20 ">
+          <div className="w-full min-h-[90%]  sm:px-10 lg:py-[20px] xl:px-[200px]  flex lg:grid grid-cols-2 flex-col justify-center items-center  z-20 ">
 
 
             {children}
@@ -37,7 +37,7 @@ export default function RootLayout({
             <SpeedInsights />
 
           </div>
-          <div className="w-full text-sm text-gray-400 flex justify-center items-center py-4">Created by Vishal with fking ❤️🫰🏻</div>
+          <div className="w-full absolute bottom-0 right-0 text-sm text-gray-400 flex justify-center items-center py-4">Created by Vishal with fking ❤️🫰🏻</div>
         </div>
       </body>
 

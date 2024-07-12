@@ -34,8 +34,8 @@ const page = () => {
 
 
     return (
-        <>
-            <div className='w-full col-span-1 hidden lg:block flex justify-center items-center '>
+        <>  
+            <div className='w-full  col-span-1 hidden lg:block flex justify-center items-center '>
                 <p className='text-4xl flex flex-col gap-3 items-start'>
                 <span>Wear a <span className='bg-[#B60071]'>mask.</span> and</span>
 
@@ -44,8 +44,8 @@ const page = () => {
                 <span className='bg-[#E4003A]'>peace✌️</span>
                 </p>
             </div>
-            <div className='w-full h-screen relative pt-[100px] lg:pb-2 col-span-1 lg-pr-[50px]' >
-                {
+            <div className='w-full h-full relative pt-[100px] lg:pb-2 col-span-1 lg-pr-[50px]' >
+                {/* {
                     ischatroomclicked && (<div className='absolute top-0 right-0 z-40 w-full h-full opacity-50 backdrop-blur-md flex justify-center items-center'>
                         <div className='relative w-[500px] h-[600px] bg-[#160d08] border-[#F2613F] border rounded-lg flex flex-col justify-start items-center'>
                             <IoCloseSharp className='text-[#F2613F] text-4xl absolute top-3 right-3' onClick={() => {
@@ -57,9 +57,10 @@ const page = () => {
                             <Button className='px-2 py-1 mt-1 z-30 border-[#F2613F] border rounded-md hover:bg-[#F2613F] hover:text-[#160d08]'>Enter</Button>
                         </div>
                     </div>)
-                }
+                } */}
 
-                <div className='max-w-7xl h-full mx-auto bg-[#0C0C0C] border-[#9B3922] border rounded-lg  relative chatroom overflow-hidden'>
+                <div className='w-full flex justify-center items-center'>
+                <div className='max-w-7xl max-h-[700px] max mx-auto bg-[#0C0C0C] border-[#9B3922] border rounded-lg  relative chatroom overflow-y-auto'>
                     <div className='w-full h-[50px] text-[#F2613F] bg-[#481E14] flex flex-row justify-between items-center px-3 sticky top-0 right-0'>
                         <p className="">ChatRooms</p>
                         <Tooltip content="The stats are live" className='bg-[#0C0C0C] text-[#ef7154] border border-[#ef7154] px-2 text-sm rounded-lg overflow-hidden mb-1'>
@@ -94,6 +95,7 @@ const page = () => {
                             }
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </>
