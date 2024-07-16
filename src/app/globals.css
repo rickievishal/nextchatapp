@@ -60,7 +60,7 @@ body {
 html {
   font-family: "IBM Plex Mono", monospace;
   scroll-behavior: smooth;
-  background: black;
+
 }
 /* Define scrollbar width and color */
 ::-webkit-scrollbar {

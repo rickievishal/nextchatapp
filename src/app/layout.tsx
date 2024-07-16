@@ -29,7 +29,7 @@ export default function RootLayout({
      ">
         <div className=" w-full min-h-screen bg-black  flex flex-col justify-center items-center relative z-20  sm:pt-0 " >
           <Body></Body>
-          <div className="w-full min-h-[90%]  sm:px-10 lg:py-[20px] xl:px-[200px]  flex lg:grid grid-cols-2 flex-col justify-center items-center  z-20 ">
+          <div className="w-full h-full  xl:px-[200px]  flex lg:grid grid-cols-2 flex-col justify-center items-center  z-20 ">
 
 
             {children}
