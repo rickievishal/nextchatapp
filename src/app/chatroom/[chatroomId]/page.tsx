@@ -23,7 +23,7 @@ const page = ({ params }: any) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [textfield, setTextfield] = useState("")
     const [chatname, setChatname] = useState("")
-    const [isempty, setIsempty] = useState(false)
+    const [isempty, setIsempty] = useState(true)
 
     function generateDeviceFingerprint(): string {
         if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
