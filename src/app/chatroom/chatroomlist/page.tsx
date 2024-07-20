@@ -36,7 +36,7 @@ const page = () => {
     return (
         <>  
             <div className='w-full  col-span-1 hidden lg:block flex justify-center items-center '>
-                <p className='text-4xl flex flex-col gap-3 items-start'>
+                <p className='text-4xl flex flex-col gap-3 items-start text-white'>
                 <span>Wear a <span className='bg-[#B60071]'>mask.</span> and</span>
 
                 <span>dont be a <span className='bg-[#EB5B00]'> menace.</span></span>
@@ -60,7 +60,7 @@ const page = () => {
                 } */}
 
                 <div className='w-full flex justify-center items-center'>
-                <div className='max-w-7xl max-h-[700px] max mx-auto bg-[#0C0C0C] border-[#9B3922] border rounded-lg  relative chatroom overflow-y-auto'>
+                <div className='max-w-7xl min-w-[300px] min-h-[700px] max-h-[700px] max mx-auto bg-[#0C0C0C] border-[#9B3922] border rounded-lg  relative chatroom overflow-y-auto'>
                     <div className='w-full h-[50px] text-[#F2613F] bg-[#481E14] flex flex-row justify-between items-center px-3 sticky top-0 right-0'>
                         <p className="">ChatRooms</p>
                         <Tooltip content="The stats are live" className='bg-[#0C0C0C] text-[#ef7154] border border-[#ef7154] px-2 text-sm rounded-lg overflow-hidden mb-1'>

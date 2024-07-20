@@ -23,7 +23,7 @@ const page = ({ params }: any) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const [textfield, setTextfield] = useState("")
     const [chatname, setChatname] = useState("")
-    const [isempty, setIsempty] = useState(true)
+    const [isempty, setIsempty] = useState(false)
 
     function generateDeviceFingerprint(): string {
         if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
@@ -174,15 +174,16 @@ const page = ({ params }: any) => {
         }
     }
     return (
-        <div className='w-full min-h-screen max-h-screen relative lg:pt-[100px] overflow-auto overflow-x-hidden lg:col-span-2 ' ref={containerRef}  >
+        <div className='w-full h-screen  max-h-screen relative lg:pt-[100px] overflow-auto overflow-x-hidden lg:col-span-2 ' ref={containerRef}  >
 
             {!isempty ?
-                <> <div className=' ' >
+                <> 
 
 
                     <motion.div initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }} className='w-full  flex flex-col justify-start items-start   gap-y-1   text-white relative  z-0' >
+                        transition={{ duration: 0.5 }} className='w-full h-fit chat flex flex-col justify-start items-start   gap-y-1   text-white relative  z-0' >
+
 
                         {
 
@@ -207,13 +208,12 @@ const page = ({ params }: any) => {
 
                     </motion.div>
 
-                </div>
                     <div className='w-full h-[100px] sticky z-50 bg-gradient-to-b from-transparent via-[rgb(0,0,0)] to-[rgb(0,0,0)] bottom-0'></div>
                     <div className='w-full h-[150px]  fixed z-50 bg-gradient-to-b from-[rgb(0,0,0)] via-[rgba(0,0,0,0.52)] to-transparent  top-0 pt-[100px] left-0 flex justify-center items-start lg:pt-[100px] text-gray-400'>{chatname}</div>
 
 
 
-                    <div className='w-full h-[50px] sticky bottom-5 left-0 z-50 px-[30px] flex justify-center items-center'>
+                    <div className='w-full h-[50px] fixed bottom-10 left-[50%] -translate-x-[50%] z-50 px-[30px] flex justify-center items-center'>
                         <input
                             type="text"
                             placeholder='text here...'
@@ -232,7 +232,7 @@ const page = ({ params }: any) => {
                         </Link>
                     </div>
                 </> :
-                (<><div className='w-full h-full flex justify-center items-center text-gray-200'>
+                (<><div className='w-full h-full mt-[200px] flex justify-center items-center text-gray-200'>
                     <div className='w-full h-full opacity-50 backdrop-blur-md flex justify-center items-center overflow-hidden'>
                         <div className='relative  h-[400px] bg-[#160d08] border-[#F2613F] border flex flex-col justify-start items-center p-[20px] pr-[100px] pl-[100px]'>
                             <p className=' w-[150px] text-center leading-tight'>You know what I want. The password. Now!!</p>
