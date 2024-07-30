@@ -174,7 +174,7 @@ const page = ({ params }: any) => {
         }
     }
     return (
-        <div className='w-full h-screen  max-h-screen relative lg:pt-[100px] overflow-auto overflow-x-hidden lg:col-span-2 ' ref={containerRef}  >
+        <div className='w-full h-screen  max-h-screen relative pt-[100px] lg:pt-[100px] overflow-auto overflow-x-hidden lg:col-span-2 ' ref={containerRef}  >
 
             {!isempty ?
                 <> 
