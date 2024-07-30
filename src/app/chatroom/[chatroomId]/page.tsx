@@ -182,7 +182,7 @@ const page = ({ params }: any) => {
 
                     <motion.div initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ duration: 0.5 }} className='w-full h-fit chat flex flex-col justify-start items-start   gap-y-1   text-white relative  z-0' >
+                        transition={{ duration: 0.5 }} className='w-full h-fit px-5 chat flex flex-col justify-start items-start   gap-y-1   text-white relative  z-0' >
 
 
                         {
