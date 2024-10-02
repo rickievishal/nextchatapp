@@ -189,14 +189,38 @@ const page = ({ params }: any) => {
 
                             chatData.map((data) => {
                                 if (data.userId == deviceFingerprint) {
-                                    return (<motion.div initial={{ skew: 10, scale: 0.9, x: 50, y: 20, opacity: 0 }} animate={{ skew: 0, scale: 1, x: 0, y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: "easeInOut" }} key={data.time} className='w-full flex justify-end z-0'>
-                                        <div className=' min-w-[50px]  max-w-[300px] bg-[#ff2b00] glow  text-white px-3 py-3 rounded-tl-[30px] rounded-t-[30px] rounded-bl-[30px]   flex justify-center items-center'>{data.message}</div>
-                                    </motion.div>)
+                                    return (<motion.div 
+                                        key={data.time}
+                                        initial={{ skew: 10, scale: 0.9, x: 50, y: 20, opacity: 0 }}
+                                        animate={{ skew: 0, scale: 1, x: 0, y: 0, opacity: 1 }}
+                                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                                        className="w-full h-auto flex justify-end z-0"
+                                      >
+                                        <p 
+                                          className="min-w-[50px] max-w-[400px] bg-[#ff2b00] glow text-white px-3 py-3 rounded-tl-[30px] rounded-t-[30px] rounded-bl-[30px] flex justify-center items-center text-wrap "
+                                          style={{ wordBreak: "break-all", overflowWrap: "break-word" }}
+                                        >
+                                          {data.message}
+                                        </p>
+                                      </motion.div>
+                                      )
                                 }
                                 else {
-                                    return (<motion.div key={data.time} initial={{ skew: 10, scale: 0.9, x: -50, y: 20, opacity: 0 }} animate={{ skew: 0, scale: 1, x: 0, y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: "easeInOut" }} className='w-full  flex justify-start'>
-                                        <div className=' min-w-[50px]   max-w-[300px]  overflow-hidden  bg-[#BED754]  text-white  glow  px-2 py-2 rounded-tr-[30px] rounded-t-[30px] rounded-br-[30px] border-[1px] flex justify-center items-center'>{data.message}</div>
-                                    </motion.div>)
+                                    return (<motion.div 
+                                        key={data.time} 
+                                        initial={{ skew: 10, scale: 0.9, x: -50, y: 20, opacity: 0 }} 
+                                        animate={{ skew: 0, scale: 1, x: 0, y: 0, opacity: 1 }} 
+                                        transition={{ duration: 0.5, ease: "easeInOut" }}  
+                                        className="w-full h-auto flex justify-start"
+                                      >
+                                        <p 
+                                          className="min-w-[50px] max-w-[400px] bg-[#BED754] text-white glow px-2 py-2 rounded-tr-[30px] rounded-t-[30px] rounded-br-[30px] border-[1px] flex justify-center items-center break-words"
+                                          style={{ wordBreak: 'break-word', overflowWrap: 'break-word', whiteSpace: 'normal' }}
+                                        >
+                                          {data.message}
+                                        </p>
+                                      </motion.div>
+                                      )
 
                                 }
                             }
@@ -210,14 +234,11 @@ const page = ({ params }: any) => {
 
                     <div className='w-full h-[100px] sticky z-50 bg-gradient-to-b from-transparent via-[rgb(0,0,0)] to-[rgb(0,0,0)] bottom-0'></div>
                     <div className='w-full h-[150px]  fixed z-50 bg-gradient-to-b from-[rgb(0,0,0)] via-[rgba(0,0,0,0.52)] to-transparent  top-0 pt-[100px] left-0 flex justify-center items-start lg:pt-[100px] text-gray-400'>{chatname}</div>
-
-
-
                     <div className='w-full h-[50px] fixed bottom-10 left-[50%] -translate-x-[50%] z-50 px-[30px] flex justify-center items-center'>
                         <input
                             type="text"
                             placeholder='text here...'
-                            className='w-full h-full border pl-[80px] border-[rgb(157,157,157)] outline-none bg-black pr-[50px] rounded-r-full rounded-l-full  glow text-[rgb(207,207,207)]'
+                            className='w-full h-full border pl-[80px] border-[rgb(157,157,157)] outline-none bg-black pr-[50px] rounded-r-full rounded-l-full fle glow text-[rgb(207,207,207)]'
                             onKeyPress={handleKeyPress}
                             value={textfield}
                             onChange={(e) => { setTextfield(e.target.value) }}
